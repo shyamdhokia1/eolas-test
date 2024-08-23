@@ -42,6 +42,10 @@
   width: 10em;
 }
 
+.large-button {
+  width: 22em;
+}
+
 .read-the-docs {
   color: #888;
 }

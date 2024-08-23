@@ -24,11 +24,16 @@ function App() {
       </div>
       <h1>Eolas Test</h1>
       <div className="card">
-        <button className = "small-button" onClick={() => setCount((count) => count + 1)}>
-          Count is {count}
-        </button>
-        <button className = "small-button" onClick={() => setClockOn((clockOn)=> clockOn ? false : true)}>
-          {clockOn ? 'Pause' : 'Resume'}
+        <div className="top-buttons">
+          <button className = "small-button" onClick={() => setCount((count) => count + 1)}>
+            Count is {count}
+          </button>
+          <button className = "small-button" onClick={() => setClockOn((clockOn)=> clockOn ? false : true)}>
+            {clockOn ? 'Pause' : 'Resume'}
+          </button>
+        </div>
+        <button className="large-button" onClick={()=> {setClockOn(false); setCount(0);}}>
+            Reset
         </button>
       </div>
     </>
