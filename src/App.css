@@ -38,12 +38,23 @@
 }
 
 .small-button{
-  margin: 1em;
+  margin: 0.5em;
   width: 10em;
 }
 
-.large-button {
-  width: 22em;
+.reset-button {
+  width: 21em;
+  margin: 0.5em;
+}
+
+.search-button {
+  width: 6em;
+  margin: 0.5em;
+}
+
+.search-input {
+  width: 11.5em;
+  margin: 0.5em;
 }
 
 .read-the-docs {
