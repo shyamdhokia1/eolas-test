@@ -41,7 +41,7 @@ type Review = {
 
 
 export const searchProducts = async (queryString: string) => {
-  let url: string = "https://dummyjson.com/products"
+  let url: string = "https://dummyjson.com/products?limit=0"
   if (queryString) {
     url = `https://dummyjson.com/products/search?q=${queryString}`
   }

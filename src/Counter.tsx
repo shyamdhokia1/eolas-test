@@ -1,12 +1,10 @@
-import { useEffect, useState, ChangeEvent } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
-import "./App.css";
-import { searchProducts, Product } from "./functions/searchProducts";
+import "./Counter.css";
 
-function App() {
+function Counter() {
   const [count, setCount] = useState(0);
   const [clockOn, setClockOn] = useState(true);
-  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -16,10 +14,6 @@ function App() {
     }, 2000);
     return () => clearInterval(timer);
   }, [clockOn]);
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.target.value);
-  };
 
   return (
     <>
@@ -43,15 +37,9 @@ function App() {
             Reset
           </button>
         </div>
-        <div>
-          <input className="search-input" type="text" placeholder="Search for Products" onChange={handleChange}></input>
-          <button className="search-button" onClick={() => searchProducts(search)}>
-            Search
-          </button>
-        </div>
       </div>
     </>
   );
 }
 
-export default App;
+export default Counter;
