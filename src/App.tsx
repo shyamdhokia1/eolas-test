@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [clockOn, setClockOn] = useState(true);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (clockOn) {
+        setCount((count) => count + 1)
+      }
+    }, 2000);
+    return () => clearInterval(timer);
+  },[clockOn]);
 
   return (
     <>
@@ -12,10 +22,13 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Eolas Test</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button className = "small-button" onClick={() => setCount((count) => count + 1)}>
+          Count is {count}
+        </button>
+        <button className = "small-button" onClick={() => setClockOn((clockOn)=> clockOn ? false : true)}>
+          {clockOn ? 'Pause' : 'Resume'}
         </button>
       </div>
     </>
