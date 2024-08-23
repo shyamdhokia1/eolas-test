@@ -36,11 +36,11 @@ function ProductTable() {
             {productList.map((product) =>
             (
               <tr>
-                <th>{product.title}</th>
-                <th>{product.description}</th>
-                <th>{product.category}</th>
-                <th>{product.price}</th>
-                <th>{product.stock}</th>
+                <td>{product.title}</td>
+                <td>{product.description}</td>
+                <td>{product.category}</td>
+                <td>{product.price}</td>
+                <td>{product.stock}</td>
               </tr>
             )
             )}
