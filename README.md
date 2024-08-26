@@ -15,3 +15,29 @@
 ### If you struggle with some tasks, it is better to have less code solved well, than a bit of everything.
 
 ### If you have faced particular challenges and have made a particular decision on how to proceed, please explain your reasoning below, in this README. This test has been designed to not trick you. If you think there are any bugs with the test itself (ie it feels like you have been tricked) please let me know below as well.
+
+# Challenges and Comments
+## Install
+`yarn` was not running. This seemed to be due to the yarnrc.yml being committed but the .yarn/releases directory not being, therefore yarnPath directed to a non existent directory. I fixed this by deleting yarnrc.yml followed by:
+```
+yarn set version 3.8.3
+yarn install
+```
+I have committed .yarn/releases/** in this repo.
+
+## Timer
+
+I initally implemented this using just `setInterval` without wrapping it in `useEffect`. This led to unexpected behaviour with previous `setInterval` functions calls not being cleared correctly and potential memory leaks. Utilising `useEffect` allows passing a clean up function as callback and adding `clockOn` as a dependency ensures the function is only called when this state variable changes.
+
+## Fetch Products
+- I have implented a simple frontend for the fetch functionality. 
+- I had difficulty defining the TypeScript type for the `event` object in the `handleChange` function. I couldn't find clear official documentation on this but the `ChangeEvent<HTMLInputElement>` interface and parameter is the correct type.
+- I'd like to discuss what best practice is for seperating components. I have created a seperate Counter and ProductTable files with respective CSS files. This created an error in the `tsconfig.app.json` as it was expecting `App.jsx` but changing `"include": [src]` to `"include": ["src/**.ts*"]` fixed it.
+- I was uncertain if I had implemented the Product type correctly as it doesn't seem to be type checking during runtime. It appears this is not intended functionality for TypeScript but I'd like to discuss this further.
+
+## No Parallel Calls
+- My initial function used a while loop which went infinite and caused a crash...
+- Successful implementation uses global variables and if there are no current calls it assigns the current Promise to that. If another concurrent call is made, the function is not called and awaits the resolution of the current call.
+- I had an issue with either test failing intermittently but this was due to incorrect error handling in the case of a concurrent call, which returned additional calls via the resolve method even if the original call rejected.
+- I also had issues defining type for the Promise but now realise that strict type is only required for resolution not rejection.
+
