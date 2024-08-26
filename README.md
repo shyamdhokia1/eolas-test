@@ -23,7 +23,7 @@
 yarn set version 3.8.3
 yarn install
 ```
-I have committed .yarn/releases/** in this repo.
+I have committed .yarn/releases/** in this repo, but I'd like to discuss whether omitting this and .yarnrc.yml is a better option.
 
 ## Timer
 
